@@ -36,3 +36,55 @@
 
   ## Customizing animations
   - When attached, SwiftUI's `.animation()` modifier automatically animates any view changes using the default system animation whenever the watched value changes.
+  - some possible values for the .animation() modifier in SwiftUI:
+    * `.default` – Smooth, natural animation.
+    * `.linear(duration:)` – Moves at a constant speed.
+    * `.easeIn(duration:)` – Starts slow, then speeds up.
+    * `.easeOut(duration:)` – Starts fast, then slows down.
+    * `.easeInOut(duration:)` – Starts and ends slow, with speed in the middle.
+    * `.spring(response:dampingFraction:blendDuration:)` – Bouncy, spring-like motion.
+    * `.interpolatingSpring(stiffness:damping:)` – More control over spring physics.
+
+```Swift
+    struct ContentView: View {
+      @State private var animationAmount = 1.0
+  
+      var body: some View {
+          Button("Tap Me") {
+              animationAmount += 1
+          }
+          .padding(50)
+          .background(.red)
+          .foregroundStyle(.white)
+          .clipShape(.circle)
+          .scaleEffect(animationAmount)
+          .animation(.easeInOut(duration: 2), value: animationAmount)
+      }
+  }
+```
+- When we say `.easeInOut(duration: 2)` we’re actually creating an instance of an Animation struct that has its own set of modifiers. So, we can attach modifiers directly to the animation to add a delay like this:
+  ```Swift
+    .animation(
+      .easeInOut(duration: 2)
+          .delay(1),
+      value: animationAmount
+    )
+  ```
+- We can repeat animations and make them bounce using autoreverses: true:
+  ```Swift
+    .animation(
+      .easeInOut(duration: 1)
+          .repeatCount(3, autoreverses: true),
+      value: animationAmount
+    )
+  ```
+- For continuous animations, there is a repeatForever() modifier that can be used like this:
+  ```Swift
+    .animation(
+    .easeInOut(duration: 1)
+        .repeatForever(autoreverses: true),
+    value: animationAmount
+    )
+  ```
+
+
