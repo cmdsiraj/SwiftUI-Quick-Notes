@@ -32,5 +32,5 @@
 #### Extra Notes
 - `.rotation3DEffect` is a view modifier that applies a 3D rotation effect to a view.
 - you animate a state variable that controls its rotation (e.g., angle in .rotation3DEffect(.degrees(angle), axis: (x: 0, y: 1, z: 0))),
-  SwiftUI interpolates between values, creating a smooth transition. [Animating Binding](Animating%20Bindings.md)
+  SwiftUI interpolates between values, creating a smooth transition. (Example of ***[Animating Bindings](Animating%20Bindings.md)***)
 - To animate it, you need to wrap the state change inside `withAnimation {}` (Explicit Binding) or attach an animation modifier (Implicit Binding) to the binding.
