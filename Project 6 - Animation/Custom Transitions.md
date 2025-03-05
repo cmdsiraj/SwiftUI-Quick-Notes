@@ -66,7 +66,6 @@ SwiftUI allows us to create custom transitions using `.modifier` and custom `Vie
 **What are view Modifiers?**
   - A View Modifier in SwiftUI is a function that applies changes to a view. Modifiers do not change the original view; instead, they return a new modified view.
   - Each modifier returns a new modified view, making them chainable.
-  - Custom view modifier.
 **What are Custom View Modifiers?**
   - We can create our own view modifiers by conforming to the `ViewModifier` protocol.
     ```Swift
