@@ -59,8 +59,10 @@ ______________
 - To try it out add this property to ***SecondView***, which creates a property called dismiss based on a value from the ***environment***:
     ```swift
     @Environment(\.dismiss) var dismiss
-  Now replace the text view in ***SecondView*** with this button:
-    ```swift
+    
+Now replace the text view in ***SecondView*** with this button:
+
+```swift
     Button("Dismiss") {
         dismiss()
     }
