@@ -38,8 +38,7 @@
         size * 0.8
     }
 
-
-  Let's break that code down:
-  1. We're saying we want to give this image a frame relative to the horizontal size of its parent. We aren't specifying a vertical size; more on that in a moment.
-  2. SwiftUI then runs a closure where we're given a size and an axis. For us the axis will be .horizontal because that's the one we're using, but this matters more when you create relative horizontal and vertical sizes. The size value will be the size of our container, which for this image is the full screen.
-  3. We need to return the size we want for this axis, so we're sending back 80% of the container's width.
+Let's break that code down:
+1. We're saying we want to give this image a frame relative to the horizontal size of its parent. We aren't specifying a vertical size; more on that in a moment.
+2. SwiftUI then runs a closure where we're given a size and an axis. For us the axis will be .horizontal because that's the one we're using, but this matters more when you create relative horizontal and vertical sizes. The size value will be the size of our container, which for this image is the full screen.
+3. We need to return the size we want for this axis, so we're sending back 80% of the container's width.
