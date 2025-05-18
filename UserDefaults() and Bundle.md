@@ -60,3 +60,52 @@
 
 - To convert the data back from ***JSON Object*** to `Codable` object, we need to use `JSONDecoder`. (The process is almost same as decoding).
 
+---------------
+
+# Bundle Extension for Decoding JSON
+
+## Purpose
+
+- Centralizes the logic for loading and decoding JSON files from the app bundle.
+- Keeps view code (e.g., `ContentView`) clean and focused.
+- Enables reusable, maintainable decoding functionality.
+
+---
+
+## Bundle Extension Setup
+
+### Create `Bundle-Decodable.swift`
+
+- Add a method inside a `Bundle` extension.
+- Method name: `decode(_ file: String)`
+- Example return type: `[String: Astronaut]`
+
+---
+
+## Base Implementation
+
+```swift
+extension Bundle {
+    func decode(_ file: String) -> [String: Astronaut] {
+        guard let url = self.url(forResource: file, withExtension: nil) else {
+            fatalError("Failed to locate \(file) in bundle.")
+        }
+
+        guard let data = try? Data(contentsOf: url) else {
+            fatalError("Failed to load \(file) from bundle.")
+        }
+
+        let decoder = JSONDecoder()
+
+        guard let loaded = try? decoder.decode([String: Astronaut].self, from: data) else {
+            fatalError("Failed to decode \(file) from bundle.")
+        }
+
+        return loaded
+    }
+}
+```
+### How it works?
+- **Locate file:** Uses `url(forResource:withExtension:)` to get the file path.
+- **Load data:** Reads file content into a `Data` object.
+- **Decode JSON:** Uses `JSONDecoder` to convert JSON into a Swift dictionary.
